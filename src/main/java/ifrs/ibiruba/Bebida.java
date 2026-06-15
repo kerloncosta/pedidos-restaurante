@@ -29,6 +29,29 @@ public class Bebida extends ItemCardapio{
 
     @Override
     public double calculateFinalPrice() {
-        return 0;
+        double finalPrice = getPrice();
+
+        if (isReturnable && !returnedBottle) {
+            finalPrice += 2.50;
+        }
+
+        return finalPrice;
+    }
+
+    @Override
+    public String toString() {
+        String textFlavor = "";
+        String returnableText = "";
+
+        if (flavor != null && !flavor.isEmpty()) {
+            textFlavor = " (" + flavor + ")";
+        }
+
+        if (isReturnable) {
+            returnableText = " Retornável";
+        }
+
+        return getName() + textFlavor + returnableText +
+                " - R$ " + String.format("%.2f", calculateFinalPrice());
     }
 }
