@@ -21,6 +21,31 @@ public class Lanche extends ItemCardapio{
 
     @Override
     public double calculateFinalPrice() {
-        return 0;
+        double finalPrice = super.getPrice();
+
+        if (this.containsAdditional) {
+            if ("G".equalsIgnoreCase(this.size)) {
+                finalPrice += 7.00;
+            } else if ("P".equalsIgnoreCase(this.size)) {
+                finalPrice += 3.00;
+            } else {
+                finalPrice += 5.00;
+            }
+        }
+        return finalPrice;
+    }
+
+    @Override
+    public String toString() {
+
+        String descricao = getName() + " (" + this.size + ")";
+
+        if (this.containsAdditional) {
+            descricao += " com cheddar e bacon";
+        }
+
+        descricao += " - R$ " + String.format("%.2f", calculateFinalPrice());
+
+        return descricao;
     }
 }
