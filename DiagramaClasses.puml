@@ -1,0 +1,79 @@
+@startuml
+
+class ifrs.ibiruba.Lanche {
+  - String size
+  + <<Create>> Lanche(String,double,String,String)
+  + <<Create>> Lanche(String,double,String)
+  + String getSize()
+  + double calculateFinalPrice()
+  + String toString()
+}
+
+class ifrs.ibiruba.ItemPedido {
+  - ItemCardapio item
+  - int amount
+  + <<Create>> ItemPedido(ItemCardapio,int)
+  + double calculateSubtotal()
+  + String toString()
+}
+
+abstract class ifrs.ibiruba.ItemCardapio {
+  - String name
+  - double price
+  - String category
+  + <<Create>> ItemCardapio(String,double,String)
+  + String getName()
+  + double getPrice()
+  + String getCategory()
+  + {abstract}double calculateFinalPrice()
+}
+
+class ifrs.ibiruba.Bebida {
+  - String flavor
+  - String subcategory
+  - boolean isReturnable
+  - boolean returnedBottle
+  + <<Create>> Bebida(String,double,String,String,String,boolean,boolean)
+  + <<Create>> Bebida(String,double,String,String)
+  + String getFlavor()
+  + String getSubcategory()
+  + boolean isReturnable()
+  + boolean isReturnedBottle()
+  + double calculateFinalPrice()
+  + String toString()
+}
+
+class ifrs.ibiruba.Pedido {
+  - String nameClient
+  - String issueDate
+  - String noteNumber
+  - ArrayList<ItemPedido> itens
+  + <<Create>> Pedido(String)
+  + String getNameClient()
+  + void addItem(ItemCardapio,int)
+  + double calculateTotal()
+  + void printSummary()
+}
+
+class ifrs.ibiruba.Main {
+  + {static} void main(String[])
+}
+
+class ifrs.ibiruba.Cardapio {
+  - Map<Integer,ItemCardapio> itens
+  + <<Create>> Cardapio()
+  + void addItem(int,ItemCardapio)
+  + ItemCardapio getItem(int)
+  + void showMenu()
+  - void loadMenu()
+}
+
+
+ifrs.ibiruba.ItemCardapio <|-- ifrs.ibiruba.Lanche
+ifrs.ibiruba.ItemCardapio <|-- ifrs.ibiruba.Bebida
+
+ifrs.ibiruba.Pedido "1" *-- "0..*" ifrs.ibiruba.ItemPedido : contém >
+ifrs.ibiruba.ItemPedido --> ifrs.ibiruba.ItemCardapio : referencia >
+ifrs.ibiruba.Cardapio "1" o-- "0..*" ifrs.ibiruba.ItemCardapio : armazena >
+
+@enduml
