@@ -55,6 +55,46 @@ public class Main {
 
                                 if (item instanceof Lanche l){
 
+                                    if (l.getCategory().equals("Xis")){
+                                        Lanche planche = new Lanche(l.getName(), l.getPrice(), l.getCategory());
+
+                                        System.out.println("Quantas unidades você deseja?");
+                                            int qtd = keyboard.nextInt();
+
+                                            p.addItem(planche, qtd);
+                                        System.out.println(qtd + "x " + l.getName() + " adicionado(s) ao carrinho!");
+
+                                    }else{
+                                        String size = "M";
+
+                                        System.out.println("Qual o tamanho desejado?");
+                                        System.out.println("[1] - Pequeno (P) custa R$ " + (l.getPrice() - 5));
+                                        System.out.println("[2] - Médio (M) custa R$ " + l.getPrice());
+                                        System.out.println("[3] - Grande (G) custa R$ " + (l.getPrice() + 10));
+                                            int sizeOption = keyboard.nextInt();
+
+                                        while(sizeOption < 1 || sizeOption > 3){
+                                            System.out.println("Resposta inválida!");
+                                            System.out.println("Selecione [1] para Pequeno, [2] para Médio ou [3] para Grande:");
+                                                sizeOption = keyboard.nextInt();
+
+                                        }
+
+                                        if (sizeOption == 1){
+                                            size = "P";
+                                        } else if (sizeOption == 3) {
+                                            size = "G";
+                                        }
+
+                                        Lanche planche = new  Lanche(l.getName(), l.getPrice(), size, l.getCategory());
+
+                                        System.out.println("Quantas unidades você deseja?");
+                                        int qtd = keyboard.nextInt();
+
+                                        p.addItem(planche, qtd);
+                                        System.out.println(qtd + "x " + l.getName() + " adicionado(s) ao carrinho!");
+
+                                    }
                                 }else if(item instanceof Bebida b){
 
                                     if (b.getCategory().equals("Alcoólica")){
@@ -169,6 +209,7 @@ public class Main {
                     for (Pedido pe : pedidos) {
                         if (pe.getNameClient().equals(nameClient)) {
                             pe.printSummary();
+                            System.out.println("\n");
                             exists = true;
                         }
                     }
