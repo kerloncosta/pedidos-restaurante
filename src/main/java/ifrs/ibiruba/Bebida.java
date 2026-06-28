@@ -31,8 +31,8 @@ public class Bebida extends ItemCardapio{
     public double calculateFinalPrice() {
         double finalPrice = getPrice();
 
-        if (isReturnable && !returnedBottle) {
-            finalPrice += 2.50;
+        if (isReturnable && returnedBottle) {
+            finalPrice -= 2.50;
         }
 
         return finalPrice;

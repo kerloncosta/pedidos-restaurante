@@ -36,11 +36,11 @@ public class Cardapio {
         addItens(4, new Lanche("Xis Bacon", 26.00, "Xis"));
         addItens(5, new Lanche("Xis Especial", 26.00, "Xis"));
 
-        addItens(6, new Lanche("Pizza de Calabresa", 38.00, "Pizza"));
+        addItens(6, new Lanche("Pizza de Calabresa", 40.00, "Pizza"));
         addItens(7, new Lanche("Pizza de Quatro Queijos", 42.00, "Pizza"));
-        addItens(8, new Lanche("Pizza de Strogonoff", 35.00, "Pizza"));
+        addItens(8, new Lanche("Pizza de Strogonoff", 42.00, "Pizza"));
         addItens(9, new Lanche("Pizza de Coração", 44.00, "Pizza"));
-        addItens(10, new Lanche("Pizza de Chocolate", 40.00, "Pizza"));
+        addItens(10, new Lanche("Pizza de Chocolate", 45.00, "Pizza"));
 
         addItens(11, new Lanche("Batata Frita Simples", 18.00, "Porções"));
         addItens(12, new Lanche("Batata Frita c/ Catupiry", 22.00, "Porções"));

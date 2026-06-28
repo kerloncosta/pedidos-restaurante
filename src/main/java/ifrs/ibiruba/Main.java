@@ -80,11 +80,63 @@ public class Main {
                                         System.out.println("Quantas unidades você deseja?");
                                             int qtd = keyboard.nextInt();
 
-                                        p.addItem(pbebida, qtd);
+                                            p.addItem(pbebida, qtd);
                                         System.out.println(qtd + "x " + b.getName() + " adicionado(s) ao carrinho!");
+
+                                    }else if(b.getCategory().equals("Sem álcool") && b.getSubcategory().equals("Refri")){
+                                        keyboard.nextLine();
+
+                                        System.out.println("Qual refrigerante você deseja?");
+                                            String flavor = keyboard.nextLine();
+
+                                        isReturnable = false;
+                                        returnedBottle = false;
+
+                                        if (b.getName().equals("Refrigerante 1L") || b.getName().equals("Refrigerante 2L")){
+                                            System.out.println("Para este tamanho, temos duas opções de embalagem.");
+                                            System.out.println("Qual você prefere? [1] Retornável / [2] Garrafa Pet");
+                                                int typeBottle = keyboard.nextInt();
+
+                                            while (typeBottle != 1 && typeBottle != 2) {
+                                                System.out.println("Resposta inválida! Selecione [1] Retornável ou [2] Descartável:");
+                                                    typeBottle = keyboard.nextInt();
+                                            }
+
+                                            if (typeBottle == 1) {
+                                                isReturnable = true;
+
+                                                System.out.println("Você tem o casco vazio para devolver agora? [1] Sim / [2] Não");
+                                                int optionBottle = keyboard.nextInt();
+
+
+                                                while (optionBottle != 1 && optionBottle != 2) {
+                                                    System.out.println("Resposta inválida! Selecione [1] Sim ou [2] Não:");
+                                                    optionBottle = keyboard.nextInt();
+                                                }
+
+                                                if (optionBottle == 1) {
+                                                    returnedBottle = true;
+                                                }
+                                            }
+                                        }
+
+                                        Bebida pbebida = new Bebida(b.getName(), b.getPrice(), b.getCategory(), b.getSubcategory(), flavor, isReturnable, returnedBottle);
+
+                                        System.out.println("Quantas unidades você deseja?");
+                                            int qtd = keyboard.nextInt();
+
+                                            p.addItem(pbebida, qtd);
+                                        System.out.println(qtd + "x " + b.getName() + " adicionado(s) ao carrinho!");
+
+                                    }else {
+                                        System.out.println("Quantas unidades você deseja?");
+                                            int qtd = keyboard.nextInt();
+
+                                            p.addItem(b, qtd);
+                                        System.out.println(qtd + "x " + b.getName() + " adicionado(s) ao carrinho!");
+
                                     }
                                 }
-
                             }else {
                                 System.out.println("O item informado não faz parte do nosso menu!!!");
                             }
