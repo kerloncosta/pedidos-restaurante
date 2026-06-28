@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static void main() {
+    public static void main(String[] args) {
 
         ArrayList<Pedido> pedidos = new ArrayList<>();
         Scanner keyboard = new Scanner(System.in);
@@ -28,23 +28,42 @@ public class Main {
                     break;
 
                 case 1:
+                    System.out.println("Informe seu nome:");
+                        keyboard.nextLine();
+                            String name = keyboard.nextLine();
 
+                            Pedido p = new Pedido(name);
+                        System.out.println();
+                    menu.showMenu();
+
+                    System.out.println("Para escolher algo do cardápio informe o número do Item!");
+                    System.out.println("Para Cancelar o pedido pressione [0]");
+                        boolean cancel = false;
+
+                        do {
+
+                        }while (re != 2);
+
+                    if (!cancel) {
+                        pedidos.add(p);
+                            p.printSummary();
+                    }
                     break;
 
                 case 2:
                     System.out.println("Informe seu nome para buscarmos seu pedidos:");
-                        keyboard.nextLine();
-                         String nameClient = keyboard.nextLine();
+                    keyboard.nextLine();
+                    String nameClient = keyboard.nextLine();
 
-                         boolean exists = false;
+                    boolean exists = false;
                     System.out.println("Histórico de pedidos do(a): " + nameClient + "\n");
 
-                        for (Pedido p : pedidos) {
-                            if (p.getNameClient().equals(nameClient)) {
-                                    p.printSummary();
-                                exists = true;
-                            }
+                    for (Pedido pe : pedidos) {
+                        if (pe.getNameClient().equals(nameClient)) {
+                            pe.printSummary();
+                            exists = true;
                         }
+                    }
                     if (!exists) {
                         System.out.println("Não a nenhum pedido no nome de " + nameClient + "\n");
                     }
@@ -55,6 +74,6 @@ public class Main {
                     System.out.println("A opção selecionada é inválida!!! \n");
                     break;
             }
-        }while(option != 0);
+        } while (option != 0);
     }
 }
