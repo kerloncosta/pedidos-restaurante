@@ -3,8 +3,6 @@ package ifrs.ibiruba;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static void main() {
 
@@ -26,7 +24,7 @@ public class Main {
             switch (option) {
 
                 case 0:
-                    System.out.println("Saindo...");
+                    System.out.println("Saindo...\n");
                     break;
 
                 case 1:
@@ -34,11 +32,27 @@ public class Main {
                     break;
 
                 case 2:
+                    System.out.println("Informe seu nome para buscarmos seu pedidos:");
+                        keyboard.nextLine();
+                         String nameClient = keyboard.nextLine();
+
+                         boolean exists = false;
+                    System.out.println("Histórico de pedidos do(a): " + nameClient + "\n");
+
+                        for (Pedido p : pedidos) {
+                            if (p.getNameClient().equals(nameClient)) {
+                                    p.printSummary();
+                                exists = true;
+                            }
+                        }
+                    if (!exists) {
+                        System.out.println("Não a nenhum pedido no nome de " + nameClient + "\n");
+                    }
 
                     break;
 
                 default:
-
+                    System.out.println("A opção selecionada é inválida!!! \n");
                     break;
             }
         }while(option != 0);
