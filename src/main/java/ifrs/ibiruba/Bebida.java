@@ -1,15 +1,24 @@
 package ifrs.ibiruba;
 
-public class Bebida extends ItemCardapio{
+public class Bebida extends ItemCardapio {
     private String flavor;
     private String subcategory;
     private boolean isReturnable;
     private boolean returnedBottle;
 
-    public String getFlavor() {return flavor;}
-    public String getSubcategory() {return subcategory;}
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public String getSubcategory() {
+        return subcategory;
+    }
+
     public boolean isReturnable() {return isReturnable;}
-    public boolean isReturnedBottle() {return returnedBottle;}
+
+    public boolean isReturnedBottle() {
+        return returnedBottle;
+    }
 
     public Bebida(String name, double price, String category, String subcategory, String flavor, boolean isReturnable, boolean returnedBottle) {
         super(name, price, category);

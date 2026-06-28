@@ -11,9 +11,17 @@ public abstract class ItemCardapio {
         this.category = category;
     }
 
-    public String getName() {return name;}
-    public double getPrice() {return price;}
-    public String getCategory() {return category;}
+    public String getName() {
+        return name;
+    }
 
-    public abstract  double calculateFinalPrice();
+    public double getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public abstract double calculateFinalPrice();
 }

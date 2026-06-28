@@ -1,9 +1,11 @@
 package ifrs.ibiruba;
 
-public class Lanche extends ItemCardapio{
+public class Lanche extends ItemCardapio {
     private String size = "U";
 
-    public String getSize() {return size;}
+    public String getSize() {
+        return size;
+    }
 
     public Lanche(String name, double price, String size, String category) {
         super(name, price, category);
@@ -18,9 +20,9 @@ public class Lanche extends ItemCardapio{
     public double calculateFinalPrice() {
         double finalPrice = super.getPrice();
 
-        if("G".equalsIgnoreCase(size)){
+        if ("G".equalsIgnoreCase(size)) {
             finalPrice += 10.00;
-        }else if("P".equalsIgnoreCase(size)){
+        } else if ("P".equalsIgnoreCase(size)) {
             finalPrice -= 5;
         }
 

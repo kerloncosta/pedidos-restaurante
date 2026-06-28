@@ -9,12 +9,12 @@ public class ItemPedido {
         this.amount = amount;
     }
 
-    public double calculateSubtotal(){
-        return item.calculateFinalPrice() *  amount;
+    public double calculateSubtotal() {
+        return item.calculateFinalPrice() * amount;
     }
 
     @Override
     public String toString() {
-        return amount + "x " + item.toString() + " = Subtotal: " + String.format("%.2f",calculateSubtotal());
+        return amount + "x " + item.toString() + " = Subtotal: " + String.format("%.2f", calculateSubtotal());
     }
 }
