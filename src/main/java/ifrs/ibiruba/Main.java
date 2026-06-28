@@ -41,6 +41,62 @@ public class Main {
                         boolean cancel = false;
 
                         do {
+                            System.out.println("Qual seu pedido: ");
+                            int ip =  keyboard.nextInt();
+
+                            if (ip == 0){
+                                System.out.println("Pedido cancelado!");
+                                    cancel = true;
+                                        break;
+
+                            }else if (menu.getItens(ip) != null){
+
+                                ItemCardapio item = menu.getItens(ip);
+
+                                if (item instanceof Lanche l){
+
+                                }else if(item instanceof Bebida b){
+
+                                    if (b.getCategory().equals("Alcoólica")){
+                                        returnedBottle = false;
+
+                                        if (b.isReturnable()){
+                                            System.out.println("Você possui o casco vazio para devolver? \n [1] - sim    [2] - não");
+                                            int optionBottle = keyboard.nextInt();
+
+                                            while (optionBottle != 1 && optionBottle != 2){
+                                                System.out.println("Resposta inválida!");
+                                                System.out.println("Selecione [1] ou [2]!!!");
+                                                    optionBottle = keyboard.nextInt();
+                                            }
+
+                                            if (optionBottle == 1){
+                                                returnedBottle = true;
+                                            }
+                                        }
+
+                                        Bebida pbebida = new Bebida(b.getName(), b.getPrice(), b.getCategory(), b.getSubcategory(),"", b.isReturnable(), returnedBottle);
+
+                                        System.out.println("Quantas unidades você deseja?");
+                                            int qtd = keyboard.nextInt();
+
+                                        p.addItem(pbebida, qtd);
+                                        System.out.println(qtd + "x " + b.getName() + " adicionado(s) ao carrinho!");
+                                    }
+                                }
+
+                            }else {
+                                System.out.println("O item informado não faz parte do nosso menu!!!");
+                            }
+
+                            System.out.println("Gostaria de pedir mais alguma coisa");
+                            System.out.println("[1] - sim    [2] - não");
+                                re = keyboard.nextInt();
+
+                            while (re != 1 && re != 2){
+                                System.out.println("Resposta invalida! Selecione [1] ou [2]");
+                                    re = keyboard.nextInt();
+                            }
 
                         }while (re != 2);
 
